@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2026 RenCupDotDev
+ *
+ * This file is part of NeoNanoQOL.
+ *
+ * NeoNanoQOL is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * NeoNanoQOL is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 #ifndef PLUGIN_H
 #define PLUGIN_H
 
@@ -21,6 +39,14 @@
  */
 
 #define PLUGIN_API_VERSION 6
+
+/* PLUGIN_VERSION is set by the build from the VERSION file. The string is
+ * exported from every plugin .so as neonano_plugin_version, so the version
+ * can be read from the built file (dlsym or strings). */
+#ifndef PLUGIN_VERSION
+#define PLUGIN_VERSION "unknown"
+#endif
+const char neonano_plugin_version[] = PLUGIN_VERSION;
 #define PLUGIN_ENTRY       "neonano_plugin_init"
 
 /* Keys delivered to a pane: a typed character is PLUGIN_KEY_TEXT | codepoint.
